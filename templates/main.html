@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block active_main %} is-active {% endblock active_main %}
+{% block active_main_mob %} is-active {% endblock active_main_mob %}
+
+
+{% block CSS %}
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+{% endblock CSS %}
+
+
+
+{% block content %}
+
+
+<div class="mdl-grid portfolio-max-width">
+<!-- Section: Products v.3 -->
+<section class="text-center my-5">
+
+  <!-- Section heading -->
+  <!-- <h2 class="h1-responsive font-weight-bold text-center my-5">Our bestsellers</h2> -->
+  <!-- Section description -->
+<!--   <p class="grey-text text-center w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur
+    adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas
+    nostrum quisquam eum porro a pariatur veniam.</p> -->
+
+<div class="row">
+	{% for dr in dress %}
+	    <!-- Grid column -->
+    <div class="col-lg-3 col-md-6 mb-lg-0 mb-4 pb-4">
+      <!-- Card -->
+      <div class="card align-items-center">
+        <!-- Card image -->
+        <div class="view overlay">
+          <img src="{{ dr.image.url }}" class="card-img-top img-fluid z-depth-1" alt="">
+          <a href="{% url 'Store:clothes_detail' dr.id %}">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <!-- Card image -->
+        <!-- Card content -->
+        <div class="card-body text-center pt-3">
+          <!-- Category & Title -->
+          <a href="{% url 'Store:clothes_detail' dr.id %}" class="grey-text">
+            <h5>{{ dr.name }}</h5>
+          </a>
+          <h5>
+          	<hr>
+<!--             <strong>
+              <a href="" class="dark-grey-text">Denim shirt
+                <span class="badge badge-pill danger-color">NEW</span>
+              </a>
+            </strong> -->
+          </h5>
+          <span align="left" class="h5 font-weight-bold teal-text">
+            <strong>{{ dr.price }} &#8372;</strong>
+          </span>
+          <i class="fas fa-shopping-cart" data-toggle="tooltip" data-placement="top" title="Добавить в корзину"></i>
+        </div>
+        <!-- Card content -->
+      </div>
+      <!-- Card -->
+    </div>
+    <!-- Grid column -->
+{% endfor %}
+</div>
+
+</section>
+<!-- Section: Products v.3 -->
+
+</div>
+
+
+
+<!-- <nav>
+  <ul class="pagination pagination-circle  pg-teal justify-content-center">
+    <li class="page-item">
+      <a class="page-link" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item active"><a class="page-link">1</a></li>
+    <li class="page-item"><a class="page-link">2</a></li>
+    <li class="page-item"><a class="page-link">3</a></li>
+    <li class="page-item"><a class="page-link">4</a></li>
+    <li class="page-item"><a class="page-link">5</a></li>
+    <li class="page-item">
+      <a class="page-link" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav> -->
+
+
+<div class="container-fluid">
+<!-- Jumbotron -->
+<div class="jumbotron text-center blue-grey lighten-5">
+
+  <!-- Title -->
+  <h2 class="card-title h2">Части женской славянской одежды</h2>
+
+  <!-- Subtitle -->
+  <p class="indigo-text my-4 font-weight-bold">Cлавянская одежда наших предков не была свободной и не подчеркивала красоту телесных пропорций и движений человеческого тела. Она плотно облегала тело, в целом была тяжелой и лишь позднее под итало-греческим влиянием стала более свободной и легкой.</p>
+
+  <!-- Grid row -->
+  <div class="row d-flex justify-content-center">
+
+    <!-- Grid column -->
+    <div class="col-xl-12 pb-1">
+
+      <p class="card-text">Женская одежда, как и мужская, первоначально состояла из рубашки, представляющей собой длинную грубую нижнюю сорочку (льняную или конопляную), которой, по всей вероятности, в большинстве случаев и ограничивался женский костюм. И поныне славянки на Балканах летом ходят в одной только длинной рубахе. Покрой ее нам неизвестен, однако несомненно, что делали ее из куска ткани, который обертывали вокруг тела и сшивали на боку. Рукавов она не имела и поддерживалась на плечах одной или двумя лямками. Была она примерно такой же, как и рубахи, которые и сейчас женщины носят в Карпатах. Верхняя одежда, если в ней была необходимость, надевалась уже на рубаху, причем нижнюю часть тела закрывали фартуками (спереди и сзади), а верхнюю – различными видами платья(Наименование женского платья сукня (souquenille, в старофранц. sousquanie) также перешло на запад во Францию) или кабатом, не отличавшимся от мужского. По всей вероятности, первоначально покрой и отделка этого вида одежды для обоих полов были одинаковы. Общеславянское выражение оплечье означает повсюду у славян какую-то надевавшуюся на плечи часть женского костюма. Весьма вероятно поэтому, что нечто похожее (какой-нибудь жилет или воротник у горла) имели уже древнеславянские женщины, но прямо это не засвидетельствовано.</p>
+
+    </div>
+    <!-- Grid column -->
+
+  </div>
+
+</div>
+<!-- Jumbotron -->
+
+</div>
+
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'js/mdb.js' %}"></script>
+
+
+{% endblock content %}
