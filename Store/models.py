@@ -8,7 +8,7 @@ from django.db import models
 
 
 
-class Dress(models.Model):
+class Product(models.Model):
 	class Meta:
 		verbose_name = "СЛАВЯНСКИЕ ПЛАТЬЯ"
 		verbose_name_plural = "Платья в славянском стиле"
@@ -40,7 +40,7 @@ class GalleryDress(models.Model):
         verbose_name = "ГАЛЕРЕЯ ДЛЯ ПЛАТЬЕВ"
         verbose_name_plural = "Изображения для славянских платьев"
 
-    dress = models.ForeignKey(Dress)
+    dress = models.ForeignKey(Product)
     img = models.ImageField(upload_to = 'img/odegda/detail')
 
 

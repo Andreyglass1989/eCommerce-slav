@@ -7,12 +7,12 @@ from django.views.generic import TemplateView, CreateView, UpdateView, DeleteVie
 
 
 class ClothesListView(ListView):
-	model = Dress
+	model = Product
 	template_name = "main.html"
 
 	def get_context_data(self, **kwargs):
 		context = super(ClothesListView, self).get_context_data(**kwargs)
-		dress = Dress.objects.all().order_by("-date_add")
+		dress = Product.objects.all().order_by("-date_add")
 		context = {
 			"dress": dress,
 		}
@@ -20,7 +20,7 @@ class ClothesListView(ListView):
 
 
 class ClothesDetailView(DetailView):
-	model = Dress
+	model = Product
 	pk_url_kwarg = "dress_id"
 	template_name = "detailView.html"
 
