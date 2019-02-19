@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.Simple
 
@@ -25,6 +26,10 @@ class Product(models.Model):
 	def __unicode__(self):
 		return self.name
 
+	def get_absolute_url(self):
+		return reverse("Store:clothes_detail", kwargs={"dress_id": self.id })
+
+
 	def image_img(self):
 		if self.image:
 		    return u'<a href="{0}" target="_blank"><img src="{0}" width="100"/></a>'.format(self.image.url)
@@ -33,6 +38,8 @@ class Product(models.Model):
 
 	image_img.short_description = 'Картинка'
 	image_img.allow_tags = True
+
+
 
 
 class GalleryDress(models.Model):

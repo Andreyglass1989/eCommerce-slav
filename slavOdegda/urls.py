@@ -20,7 +20,6 @@ from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 from Store.views import ClothesListView
-from carts.views import cart_basic
 
 urlpatterns = [
     # url(r'^$', TemplateView.as_view(template_name="main.html"), name='home'),
@@ -28,10 +27,8 @@ urlpatterns = [
     url(r'^blog/$', TemplateView.as_view(template_name="blog.html"), name='blog'),
     url(r'^contact/$', TemplateView.as_view(template_name="contact.html"), name='contact'),
     url(r'^store/', include('Store.urls', namespace='Store')),
-    url(r'^cart/', cart_basic, name='cart'),
-
+    url(r'^cart/', include('carts.urls', namespace='cart')),
     url(r'^admin/', admin.site.urls),
-
 ]
 
 urlpatterns +=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

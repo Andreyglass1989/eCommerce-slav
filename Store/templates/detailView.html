@@ -172,6 +172,14 @@
       </div>
 
     </div>
+
+{{ cart }}
+{% if object in cart.products.all %}
+В корзине <button class="btn btn-link">Удалить?</button>
+{% else %}
+<button class="btn btn-success">Add to cart</button>
+{% endif %}
+
   </main>
   <!--Main layout-->
 
