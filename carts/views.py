@@ -19,13 +19,18 @@ def cart_basic(request):
 
 
 def cart_update(request):
-	product_id = 1
-	product_obj =Product.objects.get(id=product_id)
-	cart_obj, new_obj = Cart.objects.new_or_get(request)
-	if product_obj in cart_obj.products.all():
-		cart_obj.products.remove(product_obj)
-	else:
-		cart_obj.products.add(product_obj) #cart_obj.products.add(1)
-	# return redirect("Store:clothes_detail")
-	# return redirect(product_obj.get_absolute_url())
+	product_id = request.POST.get("product_id", 100)
+	if product_id is not None:
+		try:
+			product_obj =Product.objects.get(id=product_id)
+		except Product.DoesNotExist:
+			print("Show message to user product is gone?")
+			return redirect("cart:home")
+		cart_obj, new_obj = Cart.objects.new_or_get(request)
+		if product_obj in cart_obj.products.all():
+			cart_obj.products.remove(product_obj)
+		else:
+			cart_obj.products.add(product_obj) #cart_obj.products.add(1)
+		# return redirect("Store:clothes_detail")
+		# return redirect(product_obj.get_absolute_url())
 	return redirect("cart:home")
