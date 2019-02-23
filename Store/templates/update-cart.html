@@ -1,15 +1,23 @@
-<form method="POST" action="{% url 'cart:update' %}" class="form">{% csrf_token %}
-<!-- 	<div class="input-group">
-		<input type="text" class="form-control" placeholder="Search" name="q" aria-label="Search" value="{{ request.GET.q }}">
-		<span class="input-group-btn">
-			<button class="btn btn-outline-success" type="submit">Search</button>
-		</span>
-	</div>		 -->
+<!-- <form method="POST" action="{% url 'cart:update' %}" class="form">{% csrf_token %}
+
 	<input type="hidden" name="product" value="{{ product.id }}" />
 	{% if product in cart.products.all %}
 		В корзине <button type="submit" class="btn btn-link">Удалить?</button>
 	{% else %}
 		<button type="submit" class="btn btn-success">Add to cart</button>
 	{% endif %}
+
+</form>
+ -->
+
+<form method="POST" action="{% url 'cart:update' %}" class="form d-flex justify-content-left">{% csrf_token %}
+
+  <input type="hidden" name="product" class="form-control mr-3" style="width: 100px" value="{{ product.id}}">
+  	{% if product in cart.products.all %}
+		В корзине <button type="submit" class="btn btn-link">Удалить?</button>
+	{% else %}
+		<button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart mr-1"></i> Купить</button>
+	{% endif %}
+<!--   <a href="#" class="btn btn-default"></a> -->
 
 </form>

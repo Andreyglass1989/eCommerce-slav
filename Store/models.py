@@ -26,6 +26,10 @@ class Product(models.Model):
 	def __unicode__(self):
 		return self.name
 
+	@property
+	def title(self):
+		return "%s %s" %(self.name, self.color)
+
 	def get_absolute_url(self):
 		return reverse("Store:clothes_detail", kwargs={"dress_id": self.id })
 

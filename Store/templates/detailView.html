@@ -159,13 +159,8 @@
               {% endif %}  
             </p>
 
+          {% include 'update-cart.html' with product=object.object cart=cart %}
 
-            <form class="d-flex justify-content-left">
-
-              <input aria-label="Search" type="number" class=" form-control mr-3" style="width: 100px" value="1">
-              <a href="#" class="btn btn-default"><i class="fas fa-shopping-cart mr-1"></i> Купить</a>
-
-            </form>
 
           </div>
         </div>
@@ -175,7 +170,7 @@
 
 {{ cart }}
 
-{% include 'update-cart.html' with product=object cart=cart %}
+
 
 
 
