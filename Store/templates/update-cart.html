@@ -13,11 +13,19 @@
 <form method="POST" action="{% url 'cart:update' %}" class="form d-flex justify-content-left">{% csrf_token %}
 
   <input type="hidden" name="product" class="form-control mr-3" style="width: 100px" value="{{ product.id}}">
-  	{% if product in cart.products.all %}
-		В корзине <button type="submit" class="btn btn-link">Удалить?</button>
+
+	{% if in_cart %}
+
+		<button type="submit" class="btn btn-link btn-sm">Удалить?</button>
+
 	{% else %}
-		<button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart mr-1"></i> Купить</button>
-	{% endif %}
+
+	  	{% if product in cart.products.all %}
+			В корзине <button type="submit" class="btn btn-link">Удалить?</button>
+		{% else %}
+			<button type="submit" class="btn btn-success"><i class="fas fa-cart-plus mr-1"></i> Купить</button>
+		{% endif %}
 <!--   <a href="#" class="btn btn-default"></a> -->
+	{% endif %}
 
 </form>

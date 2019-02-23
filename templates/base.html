@@ -1,5 +1,9 @@
 {% load static %}
+
+
 <!doctype html>
+
+{% url "cart:home" as cart_url %}
 <!--
   Material Design Lite
   Copyright 2015 Google Inc. All rights reserved.
@@ -83,6 +87,7 @@ footer {
                 <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
                   <a class="mdl-navigation__link {% block active_main %}{% endblock active_main %}" href="{% url 'home' %}">Одежда</a>
                   <a class="mdl-navigation__link {% block active_blog %}{% endblock active_blog %}" href="{% url 'blog' %}">Блог</a>
+                  <a class="mdl-navigation__link {% if request.path == cart_url %}is-active{% endif %}" href="{{ cart_url }}"><i class="fas fa-shopping-cart fa-2x"></i><span class="badge-pill badge-default">{{ request.session.cart_items }}</span></a>
                   <!-- <a class="mdl-navigation__link" href="about.html">About</a> -->
                   <!-- <a class="mdl-navigation__link {% block active_contact %}{% endblock active_contact %}" href="{% url 'contact' %}">Контакты</a> -->
                 </nav>
@@ -92,6 +97,7 @@ footer {
             <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
                 <a class="mdl-navigation__link {% block active_main_mob %}{% endblock active_main_mob %}" href="{% url 'home' %}">Одежда</a>
                 <a class="mdl-navigation__link {% block active_blog_mob %}{% endblock active_blog_mob %}" href="{% url 'blog' %}">Блог</a>
+                <a class="mdl-navigation__link {% if request.path == cart_url %}is-active{% endif %}" href="{{ cart_url }}"><i class="fas fa-shopping-cart fa-2x"></i><span class="badge-pill badge-default">{{ request.session.cart_items }}</span></a>
                 <!-- <a class="mdl-navigation__link" href="about.html">About</a> -->
                 <!-- <a class="mdl-navigation__link {% block active_contact_mob %} is-active {% endblock active_contact_mob %}" href="{% url 'contact' %}">Контакты</a> -->
             </nav>
